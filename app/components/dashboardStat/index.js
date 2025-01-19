@@ -1,3 +1,3 @@
-import { DashboardStat } from "./DashboardStat";
+import { DashboardStat } from './DashboardStat';
 
 export default DashboardStat;

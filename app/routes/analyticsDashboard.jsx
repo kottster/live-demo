@@ -1,7 +1,15 @@
 import { Page, usePage } from '@kottster/react';
 import DashboardStat from '../components/dashboardStat';
 import GoToGithubButton from '../components/goToGithubButton';
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import dataSource from '../.server/data-sources/postgres';
@@ -10,19 +18,20 @@ export const loader = async () => {
   const knex = dataSource.adapter.getClient();
 
   // Extract data for the stats
-  const [userCount, courseCount, instructorCount, totalRevenue] = await Promise.all([
-    knex('users').count('id as count').first(),
-    knex('courses').count('id as count').first(),
-    knex('instructors').count('id as count').first(),
-    knex('payments').sum('amount as total').first(),
-  ]);
+  const [userCount, courseCount, instructorCount, totalRevenue] =
+    await Promise.all([
+      knex('users').count('id as count').first(),
+      knex('courses').count('id as count').first(),
+      knex('instructors').count('id as count').first(),
+      knex('payments').sum('amount as total').first(),
+    ]);
   const statData = {
     totalUsers: Number(userCount?.count || 0),
     totalCourses: Number(courseCount?.count || 0),
     totalInstructors: Number(instructorCount?.count || 0),
     totalRevenue: Math.round(totalRevenue?.total || 0),
   };
-  
+
   // Get the date range from first to last user signup
   const [firstSignup, lastSignup] = await Promise.all([
     knex('users').min('created_at as date').first(),
@@ -32,15 +41,20 @@ export const loader = async () => {
   // Extract data for the chart
   const chartData = await knex
     .with('dates', (qb) => {
-      qb.select(knex.raw("generate_series(date(?), date(?), '1 day')::date as date", [firstSignup.date, lastSignup.date]));
+      qb.select(
+        knex.raw("generate_series(date(?), date(?), '1 day')::date as date", [
+          firstSignup.date,
+          lastSignup.date,
+        ])
+      );
     })
     .with('daily_signups', (qb) => {
       qb.select(
         knex.raw('date(created_at) as date'),
         knex.raw('count(id) as daily_users')
       )
-      .from('users')
-      .groupBy(knex.raw('date(created_at)'));
+        .from('users')
+        .groupBy(knex.raw('date(created_at)'));
     })
     .select(
       'dates.date',
@@ -58,12 +72,12 @@ export const loader = async () => {
 
   return json({
     statData,
-    chartData: chartData.map(row => ({
-      name: new Date(row.date).toLocaleDateString('en-US', { 
+    chartData: chartData.map((row) => ({
+      name: new Date(row.date).toLocaleDateString('en-US', {
         day: '2-digit',
-        month: 'short'
+        month: 'short',
       }),
-      totalUsers: Number(row.total_users)
+      totalUsers: Number(row.total_users),
     })),
   });
 };
@@ -75,19 +89,27 @@ export default () => {
   return (
     <Page
       title={navItem.name}
-      headerRightSection={(
-        <GoToGithubButton link='https://github.com/kottster/demo-app/blob/main/app/routes/analyticsDashboard.jsx' />
-      )}
+      headerRightSection={
+        <GoToGithubButton link="https://github.com/kottster/demo-app/blob/main/app/routes/analyticsDashboard.jsx" />
+      }
     >
-      <p className='text-gray-600 mb-9 -mt-4'>
-        A page with a custom dashboard displaying various statistics and a chart. It is built using Tailwind CSS and Recharts.
+      <p className="text-gray-600 mb-9 -mt-4">
+        A page with a custom dashboard displaying various statistics and a
+        chart. It is built using Tailwind CSS and Recharts.
       </p>
 
       <div className="grid grid-cols-4 gap-4">
         <DashboardStat title="Total Users" value={statData.totalUsers} />
         <DashboardStat title="Total Courses" value={statData.totalCourses} />
-        <DashboardStat title="Total Instructors" value={statData.totalInstructors} />
-        <DashboardStat title="Total Revenue" value={statData.totalRevenue} prefix='$' />
+        <DashboardStat
+          title="Total Instructors"
+          value={statData.totalInstructors}
+        />
+        <DashboardStat
+          title="Total Revenue"
+          value={statData.totalRevenue}
+          prefix="$"
+        />
       </div>
 
       <div className="mt-6">
@@ -95,7 +117,7 @@ export default () => {
           <div className="text-md/none font-medium">User Growth</div>
 
           <div className="mt-6">
-            <ResponsiveContainer width='100%' height={400}>
+            <ResponsiveContainer width="100%" height={400}>
               <AreaChart data={chartData}>
                 <defs>
                   <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
@@ -113,7 +135,7 @@ export default () => {
                   dataKey="name"
                   style={{ fontSize: '12px' }}
                   axisLine={false}
-                  tickFormatter={(value, index) => index === 0 ? '' : value}
+                  tickFormatter={(value, index) => (index === 0 ? '' : value)}
                   tick={{ fontSize: '12px' }}
                   tickLine={false}
                 />
@@ -128,7 +150,7 @@ export default () => {
                   stroke="#0145ff"
                   fill="url(#colorPv)"
                   strokeWidth={2.5}
-                  type='monotone'
+                  type="monotone"
                   activeDot={{ r: 8 }}
                 />
               </AreaChart>

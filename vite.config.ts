@@ -14,7 +14,7 @@ export default defineConfig({
       routes(defineRoutes) {
         return defineRoutes((route) => {
           route('/auth/*', 'service-route.js', { id: 'auth' }),
-          route('/-/*', 'service-route.js', { id: 'service' })
+            route('/-/*', 'service-route.js', { id: 'service' });
         });
       },
     }),

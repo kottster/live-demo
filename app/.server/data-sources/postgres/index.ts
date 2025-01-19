@@ -16,7 +16,7 @@ const dataSource = createDataSource({
     });
 
     return new KnexPgAdapter(client);
-  }
+  },
 });
 
 export default dataSource;

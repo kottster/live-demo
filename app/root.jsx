@@ -6,9 +6,8 @@ import './tailwind.css';
 
 function ClientApp() {
   return (
-    <KottsterApp.Provider 
+    <KottsterApp.Provider
       schema={schema}
-      
       // Only for demo purposes
       __readOnlyMode
       __appData={{
@@ -21,7 +20,7 @@ function ClientApp() {
           avatarUrl: '',
           firstName: 'Demo user',
           role: 'admin',
-          permissions: []
+          permissions: [],
         },
         stage: 'development',
       }}

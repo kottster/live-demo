@@ -5,13 +5,12 @@ import dataSource from '../.server/data-sources/postgres';
 import dayjs from 'dayjs';
 import GoToGithubButton from '../components/goToGithubButton';
 
-export const action = 
-  app.createTableRpc(dataSource, {
-    select: {
-      executeQuery: async () => {
-        const knex = dataSource.adapter.getClient();
-        
-        const { rows } = await knex.raw(`
+export const action = app.createTableRpc(dataSource, {
+  select: {
+    executeQuery: async () => {
+      const knex = dataSource.adapter.getClient();
+
+      const { rows } = await knex.raw(`
           SELECT
             dates.date::date as date,
             (random() * 400 + 100)::int as daily_active_users,
@@ -32,24 +31,25 @@ export const action =
           ) as dates(date)
           ORDER BY dates.date DESC;
         `);
-        
-        return {
-          records: rows,
-        }
-      },
+
+      return {
+        records: rows,
+      };
     },
-  });
+  },
+});
 
 export default () => {
   return (
-    <Page 
-      title='Usage Metrics'
-      headerRightSection={(
-        <GoToGithubButton link='https://github.com/kottster/demo-app/blob/main/app/routes/usageMetrics.jsx' />
-      )}
+    <Page
+      title="Usage Metrics"
+      headerRightSection={
+        <GoToGithubButton link="https://github.com/kottster/demo-app/blob/main/app/routes/usageMetrics.jsx" />
+      }
     >
-      <p className='text-gray-600 mb-9 -mt-4'>
-        A table displays data fetched using a custom SQL query. The data is randomly generated for the last 30 days.
+      <p className="text-gray-600 mb-9 -mt-4">
+        A table displays data fetched using a custom SQL query. The data is
+        randomly generated for the last 30 days.
       </p>
 
       <Table
@@ -58,7 +58,7 @@ export default () => {
             column: 'date',
             label: 'Date',
             width: 120,
-            render: r => dayjs(r.date).format('MMM D, YYYY'),
+            render: (r) => dayjs(r.date).format('MMM D, YYYY'),
           },
           {
             column: 'daily_active_users',
@@ -103,7 +103,7 @@ export default () => {
           {
             column: 'total_activities',
             label: 'Total Activities',
-          }
+          },
         ]}
       />
     </Page>

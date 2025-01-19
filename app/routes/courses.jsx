@@ -32,14 +32,15 @@ export default () => {
   const { navItem } = usePage();
 
   return (
-    <Page 
+    <Page
       title={navItem.name}
-      headerRightSection={(
-        <GoToGithubButton link='https://github.com/kottster/demo-app/blob/main/app/routes/courses.jsx' />
-      )}
+      headerRightSection={
+        <GoToGithubButton link="https://github.com/kottster/demo-app/blob/main/app/routes/courses.jsx" />
+      }
     >
-      <p className='text-gray-600 mb-9 -mt-4'>
-        A table with data from the "courses" table, supporting record creation, reading, updating, and deletion.
+      <p className="text-gray-600 mb-9 -mt-4">
+        A table with data from the "courses" table, supporting record creation,
+        reading, updating, and deletion.
       </p>
 
       <Table
@@ -47,35 +48,33 @@ export default () => {
           {
             column: 'name',
             width: 300,
-            render: r => <span className='font-semibold'>{r.name}</span>,
+            render: (r) => <span className="font-semibold">{r.name}</span>,
           },
           {
             label: 'Payment type',
             column: 'type',
-            render: r => (
+            render: (r) =>
               // @ts-ignore
-              {
+              ({
                 FREE: 'Free',
                 INCLUDED_IN_SUBSCRIPTION: 'Included',
                 PAID: 'Paid',
-              }[r.type]
-            )
+              })[r.type],
           },
           {
             column: 'price',
-            render: r => r.price ? `$${r.price}` : 'N/A',
+            render: (r) => (r.price ? `$${r.price}` : 'N/A'),
           },
           {
             label: 'Payment type',
             column: 'type',
-            render: r => (
+            render: (r) =>
               // @ts-ignore
-              {
+              ({
                 FREE: 'Free',
                 INCLUDED_IN_SUBSCRIPTION: 'Included',
                 PAID: 'Paid',
-              }[r.type]
-            )
+              })[r.type],
           },
           {
             label: 'Instructor',
@@ -84,7 +83,16 @@ export default () => {
           },
           {
             column: 'link',
-            render: r => <a href={r.link} target='_blank' rel='noreferrer' className='text-blue-600'>Open</a>,
+            render: (r) => (
+              <a
+                href={r.link}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600"
+              >
+                Open
+              </a>
+            ),
           },
         ]}
       >

@@ -20,13 +20,13 @@ export default () => {
   const { navItem } = usePage();
 
   return (
-    <Page 
+    <Page
       title={navItem.name}
-      headerRightSection={(
-        <GoToGithubButton link='https://github.com/kottster/demo-app/blob/main/app/routes/users.jsx' />
-      )}
+      headerRightSection={
+        <GoToGithubButton link="https://github.com/kottster/demo-app/blob/main/app/routes/users.jsx" />
+      }
     >
-      <p className='text-gray-600 mb-9 -mt-4'>
+      <p className="text-gray-600 mb-9 -mt-4">
         A simple table that displays data from the "users" database table.
       </p>
 

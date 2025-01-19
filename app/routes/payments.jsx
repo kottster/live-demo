@@ -61,14 +61,16 @@ export default () => {
   const { navItem } = usePage();
 
   return (
-    <Page 
+    <Page
       title={navItem.name}
-      headerRightSection={(
-        <GoToGithubButton link='https://github.com/kottster/demo-app/blob/main/app/routes/payments.jsx' />
-      )}
+      headerRightSection={
+        <GoToGithubButton link="https://github.com/kottster/demo-app/blob/main/app/routes/payments.jsx" />
+      }
     >
-      <p className='text-gray-600 mb-9 -mt-4'>
-        A table displaying data from the "subscriptions" database table, including related data from linked tables like "users," "courses," "billing_plans," and "payment_methods.
+      <p className="text-gray-600 mb-9 -mt-4">
+        A table displaying data from the "subscriptions" database table,
+        including related data from linked tables like "users," "courses,"
+        "billing_plans," and "payment_methods.
       </p>
 
       <Table
@@ -99,7 +101,7 @@ export default () => {
           {
             column: 'created_at',
             width: 160,
-          }
+          },
         ]}
       />
     </Page>
