@@ -1,0 +1,40 @@
+{
+  "name": "kottster-demo-app",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "dev": "kottster dev --port 5480",
+    "dev:add-data-source": "kottster add-data-source",
+    "build": "remix vite:build",
+    "start": "remix-serve ./build/server/index.js"
+  },
+  "dependencies": {
+    "@kottster/cli": "^2.x",
+    "@kottster/common": "^1.x",
+    "@kottster/react": "^1.x",
+    "@kottster/server": "^1.x",
+    "@remix-run/node": "^2.x",
+    "@remix-run/react": "^2.x",
+    "@remix-run/serve": "^2.x",
+    "isbot": "^4.x",
+    "knex": "^3.1.0",
+    "pg": "^8.13.1",
+    "react": "^18.x",
+    "react-dom": "^18.x"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-commonjs": "^1.x",
+    "@remix-run/dev": "^2.x",
+    "autoprefixer": "^10.x",
+    "esbuild": "0.23.1",
+    "postcss": "^8.x",
+    "tailwindcss": "^3.x",
+    "vite": "^5.x",
+    "vite-tsconfig-paths": "^4.x"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
