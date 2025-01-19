@@ -44,7 +44,7 @@ export default () => {
     <Page
       title="Usage Metrics"
       headerRightSection={
-        <GoToGithubButton link="https://github.com/kottster/demo-app/blob/main/app/routes/usageMetrics.jsx" />
+        <GoToGithubButton link="https://github.com/kottster/live-demo/blob/main/app/routes/usageMetrics.jsx" />
       }
     >
       <p className="text-gray-600 mb-9 -mt-4">

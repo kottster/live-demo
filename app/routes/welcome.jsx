@@ -66,7 +66,7 @@ export default () => {
         . You can explore the{' '}
         <a
           className="text-blue-600"
-          href="https://github.com/kottster/demo-app"
+          href="https://github.com/kottster/live-demo"
           target="_blank"
         >
           source code of this admin panel on GitHub

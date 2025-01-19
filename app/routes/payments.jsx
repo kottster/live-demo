@@ -64,7 +64,7 @@ export default () => {
     <Page
       title={navItem.name}
       headerRightSection={
-        <GoToGithubButton link="https://github.com/kottster/demo-app/blob/main/app/routes/payments.jsx" />
+        <GoToGithubButton link="https://github.com/kottster/live-demo/blob/main/app/routes/payments.jsx" />
       }
     >
       <p className="text-gray-600 mb-9 -mt-4">
