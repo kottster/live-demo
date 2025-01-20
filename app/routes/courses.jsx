@@ -54,7 +54,6 @@ export default () => {
             label: 'Payment type',
             column: 'type',
             render: (r) =>
-              // @ts-ignore
               ({
                 FREE: 'Free',
                 INCLUDED_IN_SUBSCRIPTION: 'Included',
@@ -64,17 +63,6 @@ export default () => {
           {
             column: 'price',
             render: (r) => (r.price ? `$${r.price}` : 'N/A'),
-          },
-          {
-            label: 'Payment type',
-            column: 'type',
-            render: (r) =>
-              // @ts-ignore
-              ({
-                FREE: 'Free',
-                INCLUDED_IN_SUBSCRIPTION: 'Included',
-                PAID: 'Paid',
-              })[r.type],
           },
           {
             label: 'Instructor',
