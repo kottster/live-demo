@@ -14,15 +14,7 @@ export const action = app.createTableRpc(dataSource, {
   select: {
     pageSize: 20,
     excludeColumns: ['created_at', 'updated_at', 'joined_at'],
-    searchableColumns: [
-      'email',
-      'phone_number',
-      'first_name',
-      'last_name',
-      'avatar_url',
-      'education',
-      'bio',
-    ],
+    searchableColumns: ['first_name', 'last_name', 'email', 'phone_number'],
     sortableColumns: ['id', 'active'],
   },
   insert: false,

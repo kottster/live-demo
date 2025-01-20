@@ -33,7 +33,6 @@ const linkGroups = [
       },
     ],
   },
-
   {
     title: 'Examples of custom pages',
     links: [
