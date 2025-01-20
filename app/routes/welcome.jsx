@@ -75,12 +75,12 @@ export default () => {
 
       <div className="flex gap-6 flex-col">
         {linkGroups.map((group) => (
-          <div>
+          <div key={group.title}>
             <div className="text-gray-800 mb-4 opacity-80">{group.title}</div>
 
             <div className="flex gap-4 flex-wrap">
               {group.links.map((link) => (
-                <Link to={link.path}>
+                <Link to={link.path} key={link.title}>
                   <div
                     key={link.title}
                     className="bg-white p-5 py-4 rounded-lg border-gray-200 border w-96 cursor-pointer"

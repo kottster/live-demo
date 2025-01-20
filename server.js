@@ -1,6 +1,6 @@
 /**
  * This file is the entry point for the server.
- * It's used only for live demo purposes and is not part of the final project.
+ * It's used only for live demo purposes and is heavily cached.
  * Please avoid creating files like this in your own projects.
  */
 
