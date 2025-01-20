@@ -8,7 +8,8 @@
     "dev": "kottster dev --port 5480",
     "dev:add-data-source": "kottster add-data-source",
     "build": "remix vite:build",
-    "start": "remix-serve ./build/server/index.js"
+    "start": "remix-serve ./build/server/index.js",
+    "start:server": "node ./server.js"
   },
   "dependencies": {
     "@kottster/cli": "^2.x",
@@ -18,6 +19,7 @@
     "@remix-run/node": "^2.x",
     "@remix-run/react": "^2.x",
     "@remix-run/serve": "^2.x",
+    "apicache": "^1.6.3",
     "isbot": "^4.x",
     "knex": "^3.1.0",
     "pg": "^8.13.1",
