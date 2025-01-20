@@ -6,7 +6,6 @@ import {
   AreaChart,
   CartesianGrid,
   ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
@@ -32,43 +31,38 @@ export const loader = async () => {
     totalRevenue: Math.round(totalRevenue?.total || 0),
   };
 
-  // Get the date range from first to last user signup
-  const [firstSignup, lastSignup] = await Promise.all([
-    knex('users').min('created_at as date').first(),
-    knex('users').max('created_at as date').first(),
-  ]);
+  // Get just the last signup date
+  const { date: lastSignupDate } = await knex('users')
+    .max('created_at as date')
+    .first();
 
-  // Extract data for the chart
-  const chartData = await knex
-    .with('dates', (qb) => {
-      qb.select(
-        knex.raw("generate_series(date(?), date(?), '1 day')::date as date", [
-          firstSignup.date,
-          lastSignup.date,
-        ])
-      );
-    })
-    .with('daily_signups', (qb) => {
-      qb.select(
-        knex.raw('date(created_at) as date'),
-        knex.raw('count(id) as daily_users')
-      )
-        .from('users')
-        .groupBy(knex.raw('date(created_at)'));
-    })
-    .select(
-      'dates.date',
-      knex.raw(`
-        coalesce(
-          sum(coalesce(daily_signups.daily_users, 0)) 
-          over (order by dates.date),
-          0
-        ) as total_users
-      `)
+  // Extract data for the chart, looking back 30 days
+  const { rows: chartData } = await knex.raw(`
+    WITH dates AS (
+      SELECT generate_series(
+        date(?) - interval '30 days',
+        date(?),
+        '1 day'
+      )::date as date
+    ),
+    daily_signups AS (
+      SELECT 
+        date(created_at) as date,
+        count(id) as daily_users
+      FROM users
+      GROUP BY date(created_at)
     )
-    .from('dates')
-    .leftJoin('daily_signups', 'dates.date', 'daily_signups.date')
-    .orderBy('dates.date');
+    SELECT 
+      dates.date,
+      coalesce(
+        sum(coalesce(daily_signups.daily_users, 0)) 
+        over (order by dates.date),
+        0
+      ) as total_users
+    FROM dates
+    LEFT JOIN daily_signups ON dates.date = daily_signups.date
+    ORDER BY dates.date;
+  `, [lastSignupDate, lastSignupDate]);
 
   return json({
     statData,
