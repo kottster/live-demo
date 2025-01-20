@@ -12,6 +12,7 @@
     "start:server": "node ./server.js"
   },
   "dependencies": {
+    "@hotjar/browser": "^1.0.9",
     "@kottster/cli": "^2.x",
     "@kottster/common": "^1.x",
     "@kottster/react": "^1.x",

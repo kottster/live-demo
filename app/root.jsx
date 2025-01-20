@@ -34,22 +34,9 @@ export default function App() {
   return (
     <ClientOnly>
       <ClientApp />
-      {/* <script 
-        __dangerouslySetInnerHTML={{ 
-          __html: 'window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__' 
-        }} 
-      /> */}
     </ClientOnly>
   );
 }
-
-export const links = () => [
-  {
-    rel: 'script',
-    href: '/analytics.js',
-    async: false
-  }
-];
 
 export const Layout = getRootLayout({ schema });
 export { App as ErrorBoundary };
