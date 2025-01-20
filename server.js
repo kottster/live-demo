@@ -4,10 +4,10 @@
  * Please avoid creating files like this in your own projects.
  */
 
-import { createRequestHandler } from "@remix-run/express";
-import express from "express";
-import apicache from "apicache";
-import * as build from "./build/server/index.js";
+import { createRequestHandler } from '@remix-run/express';
+import express from 'express';
+import apicache from 'apicache';
+import * as build from './build/server/index.js';
 
 const app = express();
 const cache = apicache.middleware;
@@ -16,7 +16,7 @@ app.use(cache('1 year'));
 app.use(express.static('build/client'));
 
 app.all(
-  "*",
+  '*',
   createRequestHandler({
     build
   })
