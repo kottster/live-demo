@@ -12,11 +12,11 @@ const dataSource = createDataSource({
     const client = knex({
       client: 'pg',
       connection: process.env.DATABASE_URL,
-      searchPath: ['public'],
+      searchPath: ['public']
     });
 
     return new KnexPgAdapter(client);
-  },
+  }
 });
 
 export default dataSource;

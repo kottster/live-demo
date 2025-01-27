@@ -12,7 +12,7 @@ function ClientApp() {
       __readOnlyMode
       __appData={{
         app: {
-          id: 1,
+          id: 1
         },
         user: {
           id: 1,
@@ -20,9 +20,9 @@ function ClientApp() {
           avatarUrl: '',
           firstName: 'Demo user',
           role: 'admin',
-          permissions: [],
+          permissions: []
         },
-        stage: 'development',
+        stage: 'development'
       }}
     >
       <Outlet />

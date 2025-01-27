@@ -5,7 +5,7 @@ import dataSource from '../.server/data-sources/postgres';
 import dayjs from 'dayjs';
 import GoToGithubButton from '../components/goToGithubButton';
 
-export const action = app.createTableRpc(dataSource, {
+export const action = app.defineTableController(dataSource, {
   select: {
     executeQuery: async () => {
       const knex = dataSource.adapter.getClient();
@@ -33,21 +33,21 @@ export const action = app.createTableRpc(dataSource, {
         `);
 
       return {
-        records: rows,
+        records: rows
       };
-    },
-  },
+    }
+  }
 });
 
 export default () => {
   return (
     <Page
-      title="Usage Metrics"
+      title='Usage Metrics'
       headerRightSection={
-        <GoToGithubButton link="https://github.com/kottster/live-demo/blob/main/app/routes/usageMetrics.jsx" />
+        <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/usageMetrics.jsx' />
       }
     >
-      <p className="text-gray-600 mb-9 -mt-4">
+      <p className='text-gray-600 mb-9 -mt-4'>
         A table displays data fetched using a custom SQL query. The data is
         randomly generated for the last 30 days.
       </p>
@@ -58,52 +58,54 @@ export default () => {
             column: 'date',
             label: 'Date',
             width: 120,
-            render: (r) => dayjs(r.date).format('MMM D, YYYY'),
+            render: (r) => dayjs(r.date).format('MMM D, YYYY')
           },
           {
             column: 'daily_active_users',
-            label: 'Daily Active Users',
+            label: 'Daily Active Users'
           },
           {
             column: 'unique_course_opens',
-            label: 'Unique Course Opens',
+            label: 'Unique Course Opens'
           },
           {
             column: 'unique_course_shares',
-            label: 'Unique Course Shares',
+            label: 'Unique Course Shares'
           },
           {
             column: 'unique_course_completions',
-            label: 'Unique Course Completions',
+            label: 'Unique Course Completions'
           },
           {
             column: 'courses_purchased',
-            label: 'Courses Purchased',
+            label: 'Courses Purchased'
           },
           {
             column: 'course_revenue',
             label: 'Course Revenue',
+            render: (r) => `$${(+r.course_revenue).toLocaleString()}`
           },
           {
             column: 'new_subscribers',
-            label: 'New Subscribers',
+            label: 'New Subscribers'
           },
           {
             column: 'subscription_cancellations',
-            label: 'Subscription Cancellations',
+            label: 'Subscription Cancellations'
           },
           {
             column: 'total_active_subscriptions',
-            label: 'Total Active Subscriptions',
+            label: 'Total Active Subscriptions'
           },
           {
             column: 'new_subscription_revenue',
             label: 'New Subscription Revenue',
+            render: (r) => `$${(+r.new_subscription_revenue).toLocaleString()}`
           },
           {
             column: 'total_activities',
-            label: 'Total Activities',
-          },
+            label: 'Total Activities'
+          }
         ]}
       />
     </Page>

@@ -4,14 +4,14 @@ import { app } from '../.server/app';
 import dataSource from '../.server/data-sources/postgres';
 import GoToGithubButton from '../components/goToGithubButton';
 
-export const action = app.createTableRpc(dataSource, {
+export const action = app.defineTableController(dataSource, {
   table: 'courses',
   primaryKeyColumn: 'id',
   select: {
     pageSize: 15,
     excludeColumns: [],
     searchableColumns: ['name', 'description', 'link'],
-    sortableColumns: ['id', 'price', 'available'],
+    sortableColumns: ['id', 'price', 'available']
   },
   insert: true,
   update: true,
@@ -23,9 +23,9 @@ export const action = app.createTableRpc(dataSource, {
       targetTable: 'instructors',
       targetTableKeyColumn: 'id',
       columns: ['first_name', 'last_name'],
-      searchableColumns: ['first_name', 'last_name'],
-    },
-  },
+      searchableColumns: ['first_name', 'last_name']
+    }
+  }
 });
 
 export default () => {
@@ -35,10 +35,10 @@ export default () => {
     <Page
       title={navItem.name}
       headerRightSection={
-        <GoToGithubButton link="https://github.com/kottster/live-demo/blob/main/app/routes/courses.jsx" />
+        <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/courses.jsx' />
       }
     >
-      <p className="text-gray-600 mb-9 -mt-4">
+      <p className='text-gray-600 mb-9 -mt-4'>
         A table with data from the "courses" table, supporting record creation,
         reading, updating, and deletion.
       </p>
@@ -48,7 +48,7 @@ export default () => {
           {
             column: 'name',
             width: 300,
-            render: (r) => <span className="font-semibold">{r.name}</span>,
+            render: (r) => <span className='font-semibold'>{r.name}</span>
           },
           {
             label: 'Payment type',
@@ -57,31 +57,31 @@ export default () => {
               ({
                 FREE: 'Free',
                 INCLUDED_IN_SUBSCRIPTION: 'Included',
-                PAID: 'Paid',
-              })[r.type],
+                PAID: 'Paid'
+              })[r.type]
           },
           {
             column: 'price',
-            render: (r) => (r.price ? `$${r.price}` : 'N/A'),
+            render: (r) => (r.price ? `$${r.price}` : 'N/A')
           },
           {
             label: 'Instructor',
             column: 'instructor_id',
-            linked: 'linked_instructors_by_instructor_id',
+            linked: 'linked_instructors_by_instructor_id'
           },
           {
             column: 'link',
             render: (r) => (
               <a
                 href={r.link}
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600"
+                target='_blank'
+                rel='noreferrer'
+                className='text-blue-600'
               >
                 Open
               </a>
-            ),
-          },
+            )
+          }
         ]}
       >
         <Table.RecordModal
@@ -89,12 +89,12 @@ export default () => {
             {
               column: 'name',
               required: true,
-              formField: { type: 'input' },
+              formField: { type: 'input' }
             },
             {
               column: 'description',
               required: false,
-              formField: { type: 'textarea' },
+              formField: { type: 'textarea' }
             },
             {
               label: 'Payment type',
@@ -105,32 +105,32 @@ export default () => {
                 options: [
                   { label: 'Free', value: 'FREE' },
                   { label: 'Included', value: 'INCLUDED_IN_SUBSCRIPTION' },
-                  { label: 'Paid', value: 'PAID' },
-                ],
-              },
+                  { label: 'Paid', value: 'PAID' }
+                ]
+              }
             },
             {
               column: 'price',
               required: false,
-              formField: { type: 'numberInput' },
+              formField: { type: 'numberInput' }
             },
             {
               label: 'Instructor',
               column: 'instructor_id',
               required: true,
-              formField: { type: 'recordSelect' },
+              formField: { type: 'recordSelect' }
             },
             {
               column: 'link',
               required: true,
-              formField: { type: 'input' },
+              formField: { type: 'input' }
             },
             {
               label: 'Course is available for purchase',
               column: 'available',
               required: true,
-              formField: { type: 'checkbox' },
-            },
+              formField: { type: 'checkbox' }
+            }
           ]}
         />
       </Table>

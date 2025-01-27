@@ -21,14 +21,14 @@
       "icon": "users"
     },
     {
-      "id": "payments",
-      "name": "Payments",
-      "icon": "creditCard"
-    },
-    {
       "id": "courses",
       "name": "Courses",
       "icon": "bookOpen"
+    },
+    {
+      "id": "payments",
+      "name": "Payments",
+      "icon": "creditCard"
     },
     {
       "id": "usageMetrics",

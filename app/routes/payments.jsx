@@ -4,13 +4,13 @@ import { app } from '../.server/app';
 import dataSource from '../.server/data-sources/postgres';
 import GoToGithubButton from '../components/goToGithubButton';
 
-export const action = app.createTableRpc(dataSource, {
+export const action = app.defineTableController(dataSource, {
   table: 'payments',
   primaryKeyColumn: 'id',
   select: {
     pageSize: 20,
     excludeColumns: ['created_at'],
-    sortableColumns: ['id'],
+    sortableColumns: ['id']
   },
   insert: false,
   update: false,
@@ -22,7 +22,7 @@ export const action = app.createTableRpc(dataSource, {
       targetTable: 'users',
       targetTableKeyColumn: 'id',
       columns: ['first_name', 'last_name'],
-      searchableColumns: ['first_name', 'last_name'],
+      searchableColumns: ['first_name', 'last_name']
     },
     linked_billing_plans_by_plan_id: {
       relation: 'oneToOne',
@@ -30,7 +30,7 @@ export const action = app.createTableRpc(dataSource, {
       targetTable: 'billing_plans',
       targetTableKeyColumn: 'id',
       columns: ['name'],
-      searchableColumns: ['name'],
+      searchableColumns: ['name']
     },
     linked_payment_methods_by_payment_method_id: {
       relation: 'oneToOne',
@@ -38,7 +38,7 @@ export const action = app.createTableRpc(dataSource, {
       targetTable: 'payment_methods',
       targetTableKeyColumn: 'id',
       columns: ['name'],
-      searchableColumns: ['name'],
+      searchableColumns: ['name']
     },
     linked_payment_courses: {
       relation: 'manyToMany',
@@ -52,9 +52,9 @@ export const action = app.createTableRpc(dataSource, {
       targetTable: 'courses',
       targetTableKeyColumn: 'id',
       columns: ['id', 'name'],
-      searchableColumns: ['name'],
-    },
-  },
+      searchableColumns: ['name']
+    }
+  }
 });
 
 export default () => {
@@ -64,46 +64,91 @@ export default () => {
     <Page
       title={navItem.name}
       headerRightSection={
-        <GoToGithubButton link="https://github.com/kottster/live-demo/blob/main/app/routes/payments.jsx" />
+        <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/payments.jsx' />
       }
     >
-      <p className="text-gray-600 mb-9 -mt-4">
-        A table displaying data from the "subscriptions" database table,
-        including related data from linked tables like "users," "courses,"
-        "billing_plans," and "payment_methods.
+      <p className='text-gray-600 mb-9 -mt-4'>
+        A table displaying data from the "subscriptions" database table and
+        related data from linked tables like "users", "courses",
+        "billing_plans", and "payment_methods".
       </p>
 
       <Table
         columns={[
           {
-            column: 'id',
+            column: 'id'
           },
           {
             label: 'User',
             column: 'user_id',
-            linked: 'linked_users_by_user_id',
+            linked: 'linked_users_by_user_id'
           },
           {
             label: 'Plan',
             column: 'plan_id',
-            linked: 'linked_billing_plans_by_plan_id',
+            linked: 'linked_billing_plans_by_plan_id'
           },
           {
             label: 'Payment Method',
             column: 'payment_method_id',
-            linked: 'linked_payment_methods_by_payment_method_id',
+            linked: 'linked_payment_methods_by_payment_method_id'
           },
           {
             label: 'Purchase Courses',
             column: 'payment_courses',
-            linked: 'linked_payment_courses',
+            linked: 'linked_payment_courses'
           },
           {
             column: 'created_at',
-            width: 160,
-          },
+            width: 160
+          }
         ]}
-      />
+      >
+        <Table.RecordModal
+          fields={[
+            {
+              column: 'amount',
+              required: true,
+              formField: { type: 'input' }
+            },
+            {
+              column: 'user_id',
+              required: true,
+              formField: { type: 'recordSelect' }
+            },
+            {
+              column: 'plan_id',
+              required: true,
+              formField: { type: 'recordSelect' }
+            },
+            {
+              column: 'payment_method_id',
+              required: false,
+              formField: { type: 'recordSelect' }
+            },
+            {
+              column: 'active',
+              required: true,
+              formField: { type: 'checkbox' }
+            },
+            {
+              column: 'created_at',
+              required: true,
+              formField: { type: 'datePicker', withTime: true }
+            },
+            {
+              column: 'canceled_at',
+              required: false,
+              formField: { type: 'datePicker', withTime: true }
+            },
+            {
+              column: 'canceled_reason',
+              required: false,
+              formField: { type: 'textarea' }
+            }
+          ]}
+        />
+      </Table>
     </Page>
   );
 };

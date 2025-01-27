@@ -16,7 +16,7 @@ startTransition(() => {
       <RemixBrowser />
     </StrictMode>,
     {
-      onRecoverableError: handleRecoverableError,
+      onRecoverableError: handleRecoverableError
     }
   );
 });

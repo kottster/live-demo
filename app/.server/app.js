@@ -8,7 +8,7 @@ export const app = createApp({
 
   // Only for demo purposes
   __readOnlyMode: true,
-  __ensureValidToken: async (req) => ({ isTokenValid: true, newRequest: req }),
+  __ensureValidToken: async (req) => ({ isTokenValid: true, newRequest: req })
 });
 
 app.registerDataSources(dataSourceRegistry);
