@@ -15,9 +15,9 @@
   "dependencies": {
     "@hotjar/browser": "^1.0.9",
     "@kottster/cli": "^2.5.6",
-    "@kottster/common": "^1.5.6",
-    "@kottster/react": "^1.4.8",
-    "@kottster/server": "^1.5.6",
+    "@kottster/common": "^1.5.7",
+    "@kottster/react": "^1.4.11",
+    "@kottster/server": "^1.5.7",
     "@remix-run/node": "^2.x",
     "@remix-run/react": "^2.x",
     "@remix-run/serve": "^2.x",

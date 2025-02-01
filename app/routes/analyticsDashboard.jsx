@@ -111,12 +111,13 @@ export default () => {
       headerRightSection={
         <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/analyticsDashboard.jsx' />
       }
+      headerBottomSection={
+        <p className='text-gray-600 mt-4'>
+          A page with a custom dashboard displaying various statistics and a
+          chart. It is built using Tailwind CSS and Recharts.
+        </p>
+      }
     >
-      <p className='text-gray-600 mb-9 -mt-4'>
-        A page with a custom dashboard displaying various statistics and a
-        chart. It is built using Tailwind CSS and Recharts.
-      </p>
-
       <div className='grid grid-cols-4 gap-4'>
         <DashboardStat title='Total Users' value={statData?.totalUsers} />
         <DashboardStat title='Total Courses' value={statData?.totalCourses} />
