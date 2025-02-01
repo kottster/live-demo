@@ -1,4 +1,4 @@
-import { OneToOneRelation, OneToManyRelation } from '@kottster/server';
+import { OneToOneRelation, ManyToManyRelation } from '@kottster/server';
 import { TablePage } from '@kottster/react';
 import { app } from '../.server/app';
 import dataSource from '../.server/data-sources/postgres';
@@ -37,7 +37,7 @@ export const action = app.defineTableController(dataSource, {
       columns: ['name'],
       searchableColumns: ['name']
     }),
-    linked_payment_courses: new OneToManyRelation({
+    linked_payment_courses: new ManyToManyRelation({
       // Junction table details
       junctionTable: 'payment_courses',
       junctionTableSourceKeyColumn: 'payment_id',
