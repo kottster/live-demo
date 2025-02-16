@@ -17,12 +17,13 @@ export const action = app.defineTableController(dataSource, {
   update: true,
   delete: true,
   linked: {
-    linked_instructors_by_instructor_id: new OneToOneRelation({
+    instructorsByInstructorId: new OneToOneRelation({
       relation: 'oneToOne',
       foreignKeyColumn: 'instructor_id',
       targetTable: 'instructors',
       targetTableKeyColumn: 'id',
-      columns: ['first_name', 'last_name'],
+      previewColumns: ['first_name', 'last_name'],
+      columns: ['first_name', 'last_name', 'education', 'active'],
       searchableColumns: ['first_name', 'last_name']
     })
   }
@@ -62,7 +63,7 @@ export default () => (
       {
         label: 'Instructor',
         column: 'instructor_id',
-        linked: 'linked_instructors_by_instructor_id'
+        linkedKey: 'instructorsByInstructorId'
       },
       {
         column: 'link',
@@ -112,7 +113,10 @@ export default () => (
           label: 'Instructor',
           column: 'instructor_id',
           required: true,
-          formField: { type: 'recordSelect' }
+          formField: {
+            type: 'recordSelect',
+            linkedKey: 'instructorsByInstructorId'
+          }
         },
         {
           column: 'link',

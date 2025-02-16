@@ -40,11 +40,6 @@ const linkGroups = [
         path: '/analyticsDashboard',
         title: 'Analytics Dashboard',
         description: 'Dashboard with statistics and a chart'
-      },
-      {
-        path: '/mapView',
-        title: 'Map View',
-        description: 'Contains an embedded Google Map'
       }
     ]
   }

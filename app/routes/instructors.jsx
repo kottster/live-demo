@@ -1,13 +1,9 @@
+import { OneToManyRelation } from '@kottster/server';
 import { TablePage } from '@kottster/react';
-import { Table } from '@kottster/react';
 import { app } from '../.server/app';
 import dataSource from '../.server/data-sources/postgres';
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
 import GoToGithubButton from '../components/goToGithubButton';
-
-// Extend dayjs with relativeTime plugin
-dayjs.extend(relativeTime);
 
 export const action = app.defineTableController(dataSource, {
   table: 'instructors',
@@ -18,7 +14,16 @@ export const action = app.defineTableController(dataSource, {
     searchableColumns: ['first_name', 'last_name', 'email', 'phone_number'],
     sortableColumns: ['id', 'active']
   },
-  update: true
+  update: true,
+  linked: {
+    courses: new OneToManyRelation({
+      targetTable: 'courses',
+      targetTableKeyColumn: 'id',
+      targetTableForeignKeyColumn: 'instructor_id',
+      previewColumns: ['name'],
+      searchableColumns: ['name']
+    })
+  }
 });
 
 export default () => (
@@ -63,7 +68,8 @@ export default () => (
         )
       },
       {
-        column: 'education'
+        column: 'courses',
+        linkedKey: 'courses'
       },
       {
         label: 'Status',

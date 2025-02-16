@@ -1,4 +1,4 @@
-import { OneToOneRelation, ManyToManyRelation } from '@kottster/server';
+import { OneToOneRelation, OneToManyRelation } from '@kottster/server';
 import { TablePage } from '@kottster/react';
 import { app } from '../.server/app';
 import dataSource from '../.server/data-sources/postgres';
@@ -16,38 +16,42 @@ export const action = app.defineTableController(dataSource, {
   update: false,
   delete: false,
   linked: {
-    linked_users_by_user_id: new OneToOneRelation({
-      foreignKeyColumn: 'user_id',
-      targetTable: 'users',
-      targetTableKeyColumn: 'id',
-      columns: ['first_name', 'last_name'],
-      searchableColumns: ['first_name', 'last_name']
-    }),
-    linked_billing_plans_by_plan_id: new OneToOneRelation({
-      foreignKeyColumn: 'plan_id',
-      targetTable: 'billing_plans',
-      targetTableKeyColumn: 'id',
-      columns: ['name'],
-      searchableColumns: ['name']
-    }),
-    linked_payment_methods_by_payment_method_id: new OneToOneRelation({
+    paymentMethodsByPaymentMethodId: new OneToOneRelation({
       foreignKeyColumn: 'payment_method_id',
       targetTable: 'payment_methods',
       targetTableKeyColumn: 'id',
-      columns: ['name'],
+      previewColumns: ['name'],
       searchableColumns: ['name']
     }),
-    linked_payment_courses: new ManyToManyRelation({
-      // Junction table details
-      junctionTable: 'payment_courses',
-      junctionTableSourceKeyColumn: 'payment_id',
-      junctionTableTargetKeyColumn: 'course_id',
-
-      // Target table details
-      targetTable: 'courses',
+    billingPlansByPlanId: new OneToOneRelation({
+      foreignKeyColumn: 'plan_id',
+      targetTable: 'billing_plans',
       targetTableKeyColumn: 'id',
-      columns: ['id', 'name'],
+      previewColumns: ['name'],
       searchableColumns: ['name']
+    }),
+    usersByUserId: new OneToOneRelation({
+      foreignKeyColumn: 'user_id',
+      targetTable: 'users',
+      targetTableKeyColumn: 'id',
+      previewColumns: ['first_name', 'last_name'],
+      searchableColumns: ['first_name', 'last_name']
+    }),
+    paymentCourses: new OneToManyRelation({
+      targetTable: 'payment_courses',
+      targetTableKeyColumn: 'id',
+      targetTableForeignKeyColumn: 'payment_id',
+      searchableColumns: [],
+      linked: {
+        paymentCoursesCoursesByCourseId: new OneToOneRelation({
+          foreignKeyColumn: 'course_id',
+          targetTable: 'courses',
+          targetTableKeyColumn: 'id',
+          previewColumns: ['name'],
+          columns: ['name', 'price', 'link', 'available'],
+          searchableColumns: ['name']
+        })
+      }
     })
   }
 });
@@ -71,22 +75,25 @@ export default () => (
       {
         label: 'User',
         column: 'user_id',
-        linked: 'linked_users_by_user_id'
+        linkedKey: 'usersByUserId'
       },
       {
         label: 'Plan',
         column: 'plan_id',
-        linked: 'linked_billing_plans_by_plan_id'
+        linkedKey: 'billingPlansByPlanId'
       },
       {
         label: 'Payment Method',
         column: 'payment_method_id',
-        linked: 'linked_payment_methods_by_payment_method_id'
+        linkedKey: 'paymentMethodsByPaymentMethodId'
       },
       {
-        label: 'Purchase Courses',
-        column: 'payment_courses',
-        linked: 'linked_payment_courses'
+        label: 'Purchased Courses',
+        linkedKey: 'paymentCourses'
+      },
+      {
+        column: 'amount',
+        render: (r) => `$${r.amount}`
       },
       {
         column: 'created_at',
@@ -103,17 +110,26 @@ export default () => (
         {
           column: 'user_id',
           required: true,
-          formField: { type: 'recordSelect' }
+          formField: {
+            type: 'recordSelect',
+            linkedKey: 'usersByUserId'
+          }
         },
         {
           column: 'plan_id',
           required: true,
-          formField: { type: 'recordSelect' }
+          formField: {
+            type: 'recordSelect',
+            linkedKey: 'billingPlansByPlanId'
+          }
         },
         {
           column: 'payment_method_id',
           required: false,
-          formField: { type: 'recordSelect' }
+          formField: {
+            type: 'recordSelect',
+            linkedKey: 'paymentMethodsByPaymentMethodId'
+          }
         },
         {
           column: 'active',

@@ -39,11 +39,6 @@
       "id": "analyticsDashboard",
       "name": "Analytics Dashboard",
       "icon": "barChart2"
-    },
-    {
-      "id": "mapView",
-      "name": "Map view",
-      "icon": "mapPin"
     }
   ]
 }
