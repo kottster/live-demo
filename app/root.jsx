@@ -9,7 +9,7 @@ function ClientApp() {
     <KottsterApp.Provider
       schema={schema}
       // Only for demo purposes
-      __readOnlyMode
+      __demoMode
       __appData={{
         app: {
           id: 1
