@@ -61,7 +61,7 @@ export default () => (
         render: (r) => (r.price ? `$${r.price}` : 'N/A')
       },
       {
-        label: 'Instructor',
+        label: 'Creator',
         column: 'instructor_id',
         linkedKey: 'instructorsByInstructorId'
       },
@@ -110,7 +110,7 @@ export default () => (
           formField: { type: 'numberInput' }
         },
         {
-          label: 'Instructor',
+          label: 'Creator',
           column: 'instructor_id',
           required: true,
           formField: {

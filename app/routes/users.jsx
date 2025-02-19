@@ -53,12 +53,14 @@ export default () => (
         {
           column: 'first_name',
           required: false,
-          formField: { type: 'input' }
+          formField: { type: 'input' },
+          span: 6
         },
         {
           column: 'last_name',
           required: false,
-          formField: { type: 'input' }
+          formField: { type: 'input' },
+          span: 6
         },
         {
           column: 'email',
