@@ -19,6 +19,7 @@ export const action = app.defineCustomController({
     return dataSource.adapter.getClient();
   },
 
+  // Get the statistics data
   getStatsData: async function () {
     const [userCount, courseCount, instructorCount, totalRevenue] =
       await Promise.all([
@@ -36,7 +37,8 @@ export const action = app.defineCustomController({
     };
   },
 
-  getChartsData: async function () {
+  // Get the chart data
+  getChartData: async function () {
     // Get just the last signup date
     const { date: lastSignupDate } = await this.knex('users')
       .max('created_at as date')
@@ -95,7 +97,7 @@ export default () => {
   };
 
   const fetchChartData = () => {
-    executeCustomAction('getChartsData')
+    executeCustomAction('getChartData')
       .then((data) => setChartData(data))
       .catch(console.error);
   };
