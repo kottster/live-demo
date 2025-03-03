@@ -6,11 +6,6 @@
   },
   "navItems": [
     {
-      "id": "welcome",
-      "name": "Welcome",
-      "icon": "file"
-    },
-    {
       "id": "users",
       "name": "Users",
       "icon": "users"
