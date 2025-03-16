@@ -8,7 +8,7 @@ function ClientApp() {
   return (
     <KottsterApp.Provider
       schema={schema}
-      // Only for demo purposes
+      // Only for live demo purposes
       __demoMode
       __appData={{
         app: {

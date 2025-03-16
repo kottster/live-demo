@@ -1,9 +1,8 @@
 import { createDataSource, KnexPgAdapter } from '@kottster/server';
 import knex from 'knex';
-import { DataSourceType } from '@kottster/common';
 
 const dataSource = createDataSource({
-  type: DataSourceType.postgres,
+  type: 'postgres',
   name: 'postgres',
   init: () => {
     /**
@@ -16,7 +15,8 @@ const dataSource = createDataSource({
     });
 
     return new KnexPgAdapter(client);
-  }
+  },
+  tablesConfig: {}
 });
 
 export default dataSource;

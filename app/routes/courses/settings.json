@@ -1,0 +1,28 @@
+{
+  "_version": "1",
+  "rootTable": {
+    "table": "courses",
+    "hiddenColumns": ["description", "available"],
+    "columnsOrder": [
+      "id",
+      "name",
+      "description",
+      "type",
+      "price",
+      "instructor_id",
+      "link",
+      "available"
+    ],
+    "formColumnsOrder": [
+      "id",
+      "name",
+      "description",
+      "link",
+      "instructor_id",
+      "price",
+      "type",
+      "available"
+    ],
+    "hiddenLinkedItems": ["payment_courses_by_course_id"]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "_version": "1",
+  "rootTable": {
+    "table": "payments",
+    "allowDelete": false,
+    "allowUpdate": false,
+    "allowInsert": false,
+    "columnsOrder": [
+      "id",
+      "user_id",
+      "plan_id",
+      "payment_method_id",
+      "canceled_reason",
+      "amount",
+      "created_at",
+      "active",
+      "canceled_at",
+      "updated_at"
+    ],
+    "hiddenColumns": ["active", "canceled_at", "updated_at", "canceled_reason"]
+  }
+}

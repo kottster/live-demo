@@ -1,0 +1,9 @@
+{
+  "_version": "1",
+  "rootTable": {
+    "table": "users",
+    "allowInsert": false,
+    "hiddenLinkedItems": ["user_activities_by_user_id", "payments_by_user_id"],
+    "hiddenColumns": ["updated_at"]
+  }
+}

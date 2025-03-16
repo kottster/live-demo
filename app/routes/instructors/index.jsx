@@ -1,38 +1,29 @@
-import { OneToManyRelation } from '@kottster/server';
 import { TablePage } from '@kottster/react';
-import { app } from '../.server/app';
-import dataSource from '../.server/data-sources/postgres';
+import { app } from '../../.server/app';
+import dataSource from '../../.server/data-sources/postgres';
+import pageSettings from './settings.json';
+import GoToGithubButton from '../../components/goToGithubButton';
 import dayjs from 'dayjs';
-import GoToGithubButton from '../components/goToGithubButton';
 
+/**
+ * Learn more about configuring the table controller:
+ * https://docs.kottster.app/table/configuration/api
+ */
 export const action = app.defineTableController(dataSource, {
-  table: 'instructors',
-  primaryKeyColumn: 'id',
-  select: {
-    pageSize: 20,
-    excludeColumns: ['created_at', 'updated_at', 'joined_at'],
-    searchableColumns: ['first_name', 'last_name', 'email', 'phone_number'],
-    sortableColumns: ['id', 'active']
-  },
-  update: true,
-  linked: {
-    courses: new OneToManyRelation({
-      targetTable: 'courses',
-      targetTableKeyColumn: 'id',
-      targetTableForeignKeyColumn: 'instructor_id',
-      previewColumns: ['name'],
-      searchableColumns: ['name']
-    })
-  }
+  ...pageSettings
 });
 
+/**
+ * Learn more about TablePage component and its properties:
+ * https://docs.kottster.app/table/table-page-component
+ */
 export default () => (
   <TablePage
     headerRightSection={
       <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/instructors.jsx' />
     }
     headerBottomSection={
-      <p className='text-gray-600 mt-4'>
+      <p className='text-gray-600 mt-2 pb-2'>
         A table displaying data from the "instructors" database table with
         custom column rendering (e.g. avatar, full name, status, mailto/tel
         links).
@@ -69,14 +60,14 @@ export default () => (
       },
       {
         column: 'courses',
-        linkedKey: 'courses'
+        linkedKey: 'courses_by_instructor_id'
       },
       {
         label: 'Status',
         column: 'active',
         render: (r) => (
           <span
-            className={`px-2 py-1 rounded-full text-xs ${r.active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600'}`}
+            className={`px-2 py-1 rounded-full text-xs font-medium ${r.active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600'}`}
           >
             {r.active ? 'Active' : 'Inactive'}
           </span>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { executeCustomAction, Page, usePage } from '@kottster/react';
-import DashboardStat from '../components/dashboardStat';
-import GoToGithubButton from '../components/goToGithubButton';
+import DashboardStat from '../../components/dashboardStat';
+import GoToGithubButton from '../../components/goToGithubButton';
 import {
   Area,
   AreaChart,
@@ -10,8 +10,8 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import dataSource from '../.server/data-sources/postgres';
-import { app } from '../.server/app';
+import dataSource from '../../.server/data-sources/postgres';
+import { app } from '../../.server/app';
 import { useEffect } from 'react';
 
 export const action = app.defineCustomController({
@@ -114,7 +114,7 @@ export default () => {
         <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/analyticsDashboard.jsx' />
       }
       headerBottomSection={
-        <p className='text-gray-600 mt-4'>
+        <p className='text-gray-600 mt-2 pb-2'>
           A page with a custom dashboard displaying various statistics and a
           chart. It is built using Tailwind CSS and Recharts.
         </p>

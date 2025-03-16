@@ -1,40 +1,38 @@
 import { TablePage } from '@kottster/react';
-import { app } from '../.server/app';
-import dataSource from '../.server/data-sources/postgres';
+import { app } from '../../.server/app';
+import dataSource from '../../.server/data-sources/postgres';
 import dayjs from 'dayjs';
-import GoToGithubButton from '../components/goToGithubButton';
+import GoToGithubButton from '../../components/goToGithubButton';
 
 export const action = app.defineTableController(dataSource, {
-  select: {
-    executeQuery: async () => {
-      const knex = dataSource.adapter.getClient();
+  executeQuery: async () => {
+    const knex = dataSource.adapter.getClient();
 
-      const { rows } = await knex.raw(`
-          SELECT
-            dates.date::date as date,
-            (random() * 400 + 100)::int as daily_active_users,
-            (random() * 250 + 50)::int as unique_course_opens,
-            (random() * 40 + 10)::int as unique_course_shares,
-            (random() * 25 + 5)::int as unique_course_completions,
-            (random() * 17 + 3)::int as courses_purchased,
-            (random() * 950 + 50)::numeric(10,2) as course_revenue,
-            (random() * 14 + 1)::int as new_subscribers,
-            (random() * 10)::int as subscription_cancellations,
-            (random() * 1500 + 500)::int as total_active_subscriptions,
-            (random() * 1900 + 100)::numeric(10,2) as new_subscription_revenue,
-            (random() * 650 + 150)::int as total_activities
-          FROM generate_series(
-            CURRENT_DATE - INTERVAL '29 days',
-            CURRENT_DATE,
-            '1 day'
-          ) as dates(date)
-          ORDER BY dates.date DESC;
-        `);
+    const { rows } = await knex.raw(`
+        SELECT
+          dates.date::date as date,
+          (random() * 400 + 100)::int as daily_active_users,
+          (random() * 250 + 50)::int as unique_course_opens,
+          (random() * 40 + 10)::int as unique_course_shares,
+          (random() * 25 + 5)::int as unique_course_completions,
+          (random() * 17 + 3)::int as courses_purchased,
+          (random() * 950 + 50)::numeric(10,2) as course_revenue,
+          (random() * 14 + 1)::int as new_subscribers,
+          (random() * 10)::int as subscription_cancellations,
+          (random() * 1500 + 500)::int as total_active_subscriptions,
+          (random() * 1900 + 100)::numeric(10,2) as new_subscription_revenue,
+          (random() * 650 + 150)::int as total_activities
+        FROM generate_series(
+          CURRENT_DATE - INTERVAL '29 days',
+          CURRENT_DATE,
+          '1 day'
+        ) as dates(date)
+        ORDER BY dates.date DESC;
+      `);
 
-      return {
-        records: rows
-      };
-    }
+    return {
+      records: rows
+    };
   }
 });
 
@@ -44,7 +42,7 @@ export default () => (
       <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/usageMetrics.jsx' />
     }
     headerBottomSection={
-      <p className='text-gray-600 mt-4'>
+      <p className='text-gray-600 mt-2 pb-2'>
         A table displays data fetched using a custom SQL query. The data is
         randomly generated for the last 30 days.
       </p>

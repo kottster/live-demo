@@ -9,22 +9,24 @@ export default defineConfig({
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
-        v3_throwAbortReason: true
+        v3_throwAbortReason: true,
+        v3_lazyRouteDiscovery: false,
+        v3_singleFetch: false,
       },
       routes(defineRoutes) {
         return defineRoutes((route) => {
           route('/auth/*', 'service-route.js', { id: 'auth' }),
-            route('/-/*', 'service-route.js', { id: 'service' });
+          route('/-/*', 'service-route.js', { id: 'service' })
         });
-      }
+      },
     }),
     tsconfigPaths(),
     viteCommonjs({
-      include: ['util']
-    })
+      include: ['util'],
+    }),
   ],
   optimizeDeps: {
     include: ['react', 'react-dom', '@kottster/common', '@kottster/server'],
-    exclude: ['@kottster/react']
-  }
+    exclude: ['@kottster/react'],
+  },
 });
