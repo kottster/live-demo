@@ -111,7 +111,7 @@ export default () => {
     <Page
       title={navItem.name}
       headerRightSection={
-        <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/analyticsDashboard.jsx' />
+        <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/analyticsDashboard/index.jsx' />
       }
       headerBottomSection={
         <p className='text-gray-600 mt-2 pb-2'>

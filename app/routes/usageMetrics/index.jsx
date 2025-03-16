@@ -39,7 +39,7 @@ export const action = app.defineTableController(dataSource, {
 export default () => (
   <TablePage
     headerRightSection={
-      <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/usageMetrics.jsx' />
+      <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/usageMetrics/index.jsx' />
     }
     headerBottomSection={
       <p className='text-gray-600 mt-2 pb-2'>

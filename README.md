@@ -11,5 +11,3 @@ This live demo shows the type of admin panel you can build with [Kottster](https
 ```bash
 npx @kottster/cli new
 ```
-
-Learn more in our documentation: [https://docs.kottster.app/](https://docs.kottster.app/)
