@@ -1,5 +1,5 @@
 {
-  "name": "kottster-demo-app",
+  "name": "kottster-demo-app-3",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -8,34 +8,31 @@
     "dev": "kottster dev --port 5480",
     "dev:add-data-source": "kottster add-data-source",
     "build": "remix vite:build",
-    "start": "remix-serve ./build/server/index.js",
-    "prettier": "npx prettier ./app --write"
+    "start": "remix-serve ./build/server/index.js"
   },
   "dependencies": {
     "@hotjar/browser": "^1.0.9",
-    "@kottster/cli": "^2.5.8",
-    "@kottster/common": "^1.7.3",
-    "@kottster/react": "^1.6.7",
-    "@kottster/server": "^1.7.3",
+    "@kottster/cli": "^2.x",
+    "@kottster/common": "^1.x",
+    "@kottster/react": "^1.x",
+    "@kottster/server": "^1.x",
     "@remix-run/node": "^2.x",
     "@remix-run/react": "^2.x",
     "@remix-run/serve": "^2.x",
+    "@tailwindcss/vite": "^4.0.15",
     "dayjs": "^1.11.13",
     "isbot": "^4.x",
     "knex": "^3.1.0",
-    "pg": "^8.14.0",
+    "pg": "^8.14.1",
     "react": "^18.x",
     "react-dom": "^18.x",
-    "recharts": "^2.15.1"
+    "recharts": "^2.15.1",
+    "tailwindcss": "^4.0.15"
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "^1.x",
     "@remix-run/dev": "^2.x",
-    "autoprefixer": "^10.x",
-    "esbuild": "0.23.1",
-    "postcss": "^8.x",
-    "prettier": "^3.5.3",
-    "tailwindcss": "^3.x",
+    "esbuild": "^0.x",
     "vite": "^5.x",
     "vite-tsconfig-paths": "^4.x"
   },

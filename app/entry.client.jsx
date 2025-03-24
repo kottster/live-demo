@@ -5,6 +5,7 @@ import { handleRecoverableError } from '@kottster/react';
 import Hotjar from '@hotjar/browser';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import './main.css';
 
 // Extend dayjs with relativeTime plugin
 dayjs.extend(relativeTime);

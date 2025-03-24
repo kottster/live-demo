@@ -2,7 +2,6 @@ import { Outlet } from '@remix-run/react';
 import { KottsterApp, ClientOnly, getRootLayout } from '@kottster/react';
 import '@kottster/react/dist/style.css';
 import schema from '../app-schema.json';
-import './tailwind.css';
 
 function ClientApp() {
   return (

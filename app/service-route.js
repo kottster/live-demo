@@ -1,6 +1,7 @@
 import { app } from './.server/app';
 import { SpecialRoutePage } from '@kottster/react';
 
+
 export const loader = async (args) => {
   return app.createServiceRouteLoader()(args);
 };

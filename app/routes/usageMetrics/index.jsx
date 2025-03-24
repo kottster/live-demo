@@ -51,7 +51,7 @@ export default () => (
       {
         column: 'date',
         label: 'Date',
-        width: 120,
+        width: 160,
         render: (r) => dayjs(r.date).format('MMM D, YYYY')
       },
       {

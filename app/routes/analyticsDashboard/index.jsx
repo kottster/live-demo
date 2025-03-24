@@ -135,7 +135,7 @@ export default () => {
       </div>
 
       <div className='mt-6'>
-        <div className='border p-6 rounded-lg bg-white'>
+        <div className='border border-gray-200 p-6 rounded-lg bg-white'>
           <div className='text-md/none font-medium'>User Growth</div>
 
           <div className='mt-6'>
