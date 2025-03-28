@@ -1,4 +1,4 @@
-# Kottster Demo App
+# Kottster Live Demo
 
 This live demo shows the type of admin panel you can build with [Kottster](https://kottster.app/).
 
@@ -11,3 +11,5 @@ This live demo shows the type of admin panel you can build with [Kottster](https
 ```bash
 npx @kottster/cli new
 ```
+
+Or pull the [starter template][https://github.com/kottster/kottster-template-js] from GitHub.
