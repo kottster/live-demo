@@ -12,4 +12,4 @@ This live demo shows the type of admin panel you can build with [Kottster](https
 npx @kottster/cli new
 ```
 
-Or pull the [starter template][https://github.com/kottster/kottster-template-js] from GitHub.
+Or pull the [starter template](https://github.com/kottster/kottster-template-js) from GitHub.
