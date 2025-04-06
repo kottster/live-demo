@@ -29,9 +29,10 @@ export default () => (
         links).
       </p>
     }
-    columns={[
+    columnTransformer={(columns) => [
+      // Add custom full_name column at the beginning
       {
-        column: 'full_name',
+        label: 'Full Name',
         width: 220,
         render: (r) => (
           <div className='flex gap-2 items-center'>
@@ -42,89 +43,59 @@ export default () => (
           </div>
         )
       },
-      {
-        column: 'email',
+
+      ...columns
+    ]}
+    columnOverrides={{
+      email: (column) => ({
+        ...column,
         render: (r) => (
           <a className='text-blue-600' href={`mailto:${r.email}`}>
             {r.email}
           </a>
         )
-      },
-      {
-        column: 'phone_number',
+      }),
+      phone_number: (column) => ({
+        ...column,
         render: (r) => (
           <a className='text-blue-600' href={`tel:${r.phone_number}`}>
             {r.phone_number}
           </a>
         )
-      },
-      {
-        column: 'courses',
-        linkedKey: 'courses_by_instructor_id'
-      },
-      {
-        label: 'Status',
-        column: 'active',
+      }),
+      active: (column) => ({
+        ...column,
         render: (r) => (
           <span
-            className={`px-2 py-1 rounded-full text-xs font-medium ${r.active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600'}`}
+            className={`px-2 py-1 rounded-full text-xs font-medium ${
+              r.active
+                ? 'bg-green-100 text-green-800'
+                : 'bg-gray-100 text-gray-600'
+            }`}
           >
             {r.active ? 'Active' : 'Inactive'}
           </span>
         )
-      },
-      {
-        label: 'Joined',
-        column: 'joined_at',
-        width: 160,
+      }),
+      joined_at: (column) => ({
+        ...column,
         render: (r) => dayjs(r.joined_at).fromNow()
-      }
-    ]}
+      })
+    }}
     form={{
-      fields: [
-        {
-          column: 'first_name',
-          required: false,
+      fieldOverrides: {
+        // Set custom span for the first_name and last_name fields
+        first_name: (field) => ({
+          ...field,
           formField: { type: 'input' },
           span: 6
-        },
-        {
-          column: 'last_name',
-          required: false,
+        }),
+        last_name: (field) => ({
+          ...field,
           formField: { type: 'input' },
           span: 6
-        },
-        {
-          column: 'email',
-          required: false,
-          formField: { type: 'input' }
-        },
-        {
-          column: 'phone_number',
-          required: false,
-          formField: { type: 'input' }
-        },
-        {
-          column: 'avatar_url',
-          required: false,
-          formField: { type: 'input' }
-        },
-        {
-          column: 'education',
-          required: false,
-          formField: { type: 'textarea' }
-        },
-        {
-          column: 'bio',
-          required: false,
-          formField: { type: 'textarea' }
-        },
-        {
-          column: 'active',
-          required: true,
-          formField: { type: 'checkbox' }
-        }
-      ]
+        })
+      }
     }}
   />
 );

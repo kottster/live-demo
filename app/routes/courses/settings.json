@@ -2,14 +2,14 @@
   "_version": "1",
   "rootTable": {
     "table": "courses",
-    "hiddenColumns": ["description", "available"],
+    "hiddenColumns": ["description", "available", "id", "name"],
     "columnsOrder": [
       "id",
       "name",
       "description",
+      "instructor_id",
       "type",
       "price",
-      "instructor_id",
       "link",
       "available"
     ],

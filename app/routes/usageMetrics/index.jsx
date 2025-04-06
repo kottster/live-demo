@@ -4,6 +4,10 @@ import dataSource from '../../.server/data-sources/postgres';
 import dayjs from 'dayjs';
 import GoToGithubButton from '../../components/goToGithubButton';
 
+/**
+ * Learn more about configuring the table controller:
+ * https://docs.kottster.app/table/configuration/api
+ */
 export const action = app.defineTableController(dataSource, {
   executeQuery: async () => {
     const knex = dataSource.adapter.getClient();
@@ -36,6 +40,10 @@ export const action = app.defineTableController(dataSource, {
   }
 });
 
+/**
+ * Learn more about TablePage component and its properties:
+ * https://docs.kottster.app/table/table-page-component
+ */
 export default () => (
   <TablePage
     headerRightSection={

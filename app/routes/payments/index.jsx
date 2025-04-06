@@ -29,10 +29,11 @@ export default () => (
       </p>
     }
     columnOverrides={{
-      amount: {
-        column: 'amount',
+      // Add $ sign to amount column
+      amount: (column) => ({
+        ...column,
         render: (r) => `$${r.amount}`
-      }
+      })
     }}
   />
 );

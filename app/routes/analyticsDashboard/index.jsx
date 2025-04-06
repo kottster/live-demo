@@ -14,6 +14,10 @@ import dataSource from '../../.server/data-sources/postgres';
 import { app } from '../../.server/app';
 import { useEffect } from 'react';
 
+/**
+ * Learn more about defining a custom controller:
+ * https://docs.kottster.app/custom-pages/api
+ */
 export const action = app.defineCustomController({
   get knex() {
     return dataSource.adapter.getClient();

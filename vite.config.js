@@ -12,23 +12,23 @@ export default defineConfig({
         v3_relativeSplatPath: true,
         v3_throwAbortReason: true,
         v3_lazyRouteDiscovery: false,
-        v3_singleFetch: false,
+        v3_singleFetch: false
       },
       routes(defineRoutes) {
         return defineRoutes((route) => {
           route('/auth/*', 'service-route.js', { id: 'auth' }),
-          route('/-/*', 'service-route.js', { id: 'service' })
+            route('/-/*', 'service-route.js', { id: 'service' });
         });
-      },
+      }
     }),
     tailwindcss(),
     tsconfigPaths(),
     viteCommonjs({
-      include: ['util'],
-    }),
+      include: ['util']
+    })
   ],
   optimizeDeps: {
     include: ['react', 'react-dom', '@kottster/common', '@kottster/server'],
-    exclude: ['@kottster/react'],
-  },
+    exclude: ['@kottster/react']
+  }
 });

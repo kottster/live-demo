@@ -27,27 +27,43 @@ export default () => (
         reading, updating, and deletion.
       </p>
     }
-    columnOverrides={{
-      name: {
-        column: 'name',
-        render: (r) => <span className='font-semibold'>{r.name}</span>
+    columnTransformer={(columns) => [
+      // Add custom course column at the beginning
+      {
+        label: 'Course',
+        width: 300,
+        render: (r) => (
+          <div className='flex flex-col gap-1 items-start'>
+            <span className='font-semibold'>{r.name}</span>
+            <span className='text-gray-500 text-xs overflow-hidden text-ellipsis max-w-full'>
+              {r.description}
+            </span>
+          </div>
+        )
       },
-      type: {
-        column: 'type',
-        label: 'Payment type',
+      ...columns
+    ]}
+    columnOverrides={{
+      // Show course type in a human-readable format
+      type: (column) => ({
+        ...column,
         render: (r) =>
           ({
             FREE: 'Free',
             INCLUDED_IN_SUBSCRIPTION: 'Included',
             PAID: 'Paid'
-          })[r.type]
-      },
-      price: {
-        column: 'price',
-        render: (r) => (r.price ? `$${r.price}` : 'N/A')
-      },
-      link: {
-        column: 'link',
+          }[r.type])
+      }),
+
+      // Add $ sign to price column
+      price: (column) => ({
+        ...column,
+        render: (r) => (r.price ? `$${r.price}` : '')
+      }),
+
+      // Show link as a clickable link instead of a plain text
+      link: (column) => ({
+        ...column,
         render: (r) => (
           <a
             href={r.link}
@@ -58,7 +74,7 @@ export default () => (
             Open
           </a>
         )
-      }
+      })
     }}
     form={{
       fieldOverrides: {
