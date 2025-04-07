@@ -113,7 +113,7 @@ export default () => {
 
   return (
     <Page
-      title={navItem.name}
+      title={navItem?.name}
       headerRightSection={
         <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/analyticsDashboard/index.jsx' />
       }
