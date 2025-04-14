@@ -2,27 +2,70 @@
   "_version": "1",
   "rootTable": {
     "table": "courses",
-    "hiddenColumns": ["description", "available", "id", "name"],
-    "columnsOrder": [
-      "id",
-      "name",
-      "description",
-      "instructor_id",
-      "type",
-      "price",
-      "link",
-      "available"
+    "columns": [
+      {
+        "hidden": true,
+        "position": 0,
+        "relationshipPreviewColumns": [],
+        "id": "id",
+        "column": "id"
+      },
+      {
+        "hidden": true,
+        "position": 1,
+        "relationshipPreviewColumns": [],
+        "id": "name",
+        "column": "name"
+      },
+      {
+        "hidden": true,
+        "position": 2,
+        "relationshipPreviewColumns": [],
+        "id": "description",
+        "column": "description"
+      },
+      {
+        "hidden": true,
+        "position": 3,
+        "relationshipPreviewColumns": [],
+        "id": "available",
+        "column": "available"
+      },
+      {
+        "position": 4,
+        "relationshipPreviewColumns": [
+          "first_name",
+          "last_name"
+        ],
+        "id": "instructor_id",
+        "label": "Creator",
+        "column": "instructor_id"
+      },
+      {
+        "position": 5,
+        "relationshipPreviewColumns": [],
+        "id": "type",
+        "column": "type"
+      },
+      {
+        "position": 6,
+        "relationshipPreviewColumns": [],
+        "id": "price",
+        "prefix": "$",
+        "column": "price"
+      },
+      {
+        "position": 7,
+        "relationshipPreviewColumns": [],
+        "id": "link",
+        "column": "link"
+      }
     ],
-    "formColumnsOrder": [
-      "id",
-      "name",
-      "description",
-      "link",
-      "instructor_id",
-      "price",
-      "type",
-      "available"
-    ],
-    "hiddenLinkedItems": ["payment_courses_by_course_id"]
+    "relationships": [
+      {
+        "key": "payment_courses_by_course_id",
+        "hidden": true
+      }
+    ]
   }
 }

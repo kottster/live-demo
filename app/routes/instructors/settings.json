@@ -2,30 +2,62 @@
   "_version": "1",
   "rootTable": {
     "table": "instructors",
-    "hiddenColumns": [
-      "id",
-      "bio",
-      "education",
-      "updated_at",
-      "last_name",
-      "first_name",
-      "avatar_url",
-      "created_at"
-    ],
-    "formColumnsOrder": [
-      "id",
-      "first_name",
-      "last_name",
-      "email",
-      "phone_number",
-      "avatar_url",
-      "education",
-      "bio",
-      "active",
-      "created_at",
-      "joined_at",
-      "updated_at"
-    ],
-    "formHiddenColumns": ["id", "created_at", "joined_at", "updated_at"]
+    "columns": [
+      {
+        "hidden": true,
+        "column": "id"
+      },
+      {
+        "hidden": true,
+        "formFieldSpan": "6",
+        "formField": {
+          "type": "input"
+        },
+        "column": "first_name"
+      },
+      {
+        "hidden": true,
+        "column": "bio"
+      },
+      {
+        "hidden": true,
+        "formField": {
+          "type": "input"
+        },
+        "column": "education"
+      },
+      {
+        "hidden": true,
+        "column": "updated_at"
+      },
+      {
+        "hidden": true,
+        "column": "avatar_url"
+      },
+      {
+        "hidden": true,
+        "formFieldSpan": "6",
+        "formField": {
+          "type": "input"
+        },
+        "column": "last_name"
+      },
+      {
+        "hidden": true,
+        "column": "created_at"
+      },
+      {
+        "formField": {
+          "type": "input"
+        },
+        "column": "email"
+      },
+      {
+        "formField": {
+          "type": "input"
+        },
+        "column": "phone_number"
+      }
+    ]
   }
 }

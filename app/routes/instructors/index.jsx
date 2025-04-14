@@ -2,7 +2,6 @@ import { TablePage } from '@kottster/react';
 import { app } from '../../.server/app';
 import dataSource from '../../.server/data-sources/postgres';
 import pageSettings from './settings.json';
-import GoToGithubButton from '../../components/goToGithubButton';
 import dayjs from 'dayjs';
 
 /**
@@ -19,16 +18,6 @@ export const action = app.defineTableController(dataSource, {
  */
 export default () => (
   <TablePage
-    headerRightSection={
-      <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/instructors/index.jsx' />
-    }
-    headerBottomSection={
-      <p className='text-gray-600 mt-2 pb-2'>
-        A table displaying data from the "instructors" database table with
-        custom column rendering (e.g. avatar, full name, status, mailto/tel
-        links).
-      </p>
-    }
     columnTransformer={(columns) => [
       // Add custom full_name column at the beginning
       {
@@ -50,7 +39,7 @@ export default () => (
       email: (column) => ({
         ...column,
         render: (r) => (
-          <a className='text-blue-600' href={`mailto:${r.email}`}>
+          <a className='text-blue-700' href={`mailto:${r.email}`}>
             {r.email}
           </a>
         )
@@ -58,7 +47,7 @@ export default () => (
       phone_number: (column) => ({
         ...column,
         render: (r) => (
-          <a className='text-blue-600' href={`tel:${r.phone_number}`}>
+          <a className='text-blue-700' href={`tel:${r.phone_number}`}>
             {r.phone_number}
           </a>
         )
@@ -81,21 +70,6 @@ export default () => (
         ...column,
         render: (r) => dayjs(r.joined_at).fromNow()
       })
-    }}
-    form={{
-      fieldOverrides: {
-        // Set custom span for the first_name and last_name fields
-        first_name: (field) => ({
-          ...field,
-          formField: { type: 'input' },
-          span: 6
-        }),
-        last_name: (field) => ({
-          ...field,
-          formField: { type: 'input' },
-          span: 6
-        })
-      }
     }}
   />
 );

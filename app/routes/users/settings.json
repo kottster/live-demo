@@ -2,8 +2,48 @@
   "_version": "1",
   "rootTable": {
     "table": "users",
-    "allowInsert": false,
-    "hiddenLinkedItems": ["user_activities_by_user_id", "payments_by_user_id"],
-    "hiddenColumns": ["updated_at"]
+    "columns": [
+      {
+        "hidden": true,
+        "column": "updated_at"
+      },
+      {
+        "formField": {
+          "type": "input"
+        },
+        "formFieldSpan": "6",
+        "column": "first_name"
+      },
+      {
+        "formField": {
+          "type": "input"
+        },
+        "formFieldSpan": "6",
+        "column": "last_name"
+      },
+      {
+        "formField": {
+          "type": "input"
+        },
+        "column": "email"
+      },
+      {
+        "formField": {
+          "type": "input"
+        },
+        "column": "phone_number"
+      }
+    ],
+    "relationships": [
+      {
+        "key": "user_activities_by_user_id",
+        "hidden": true
+      },
+      {
+        "key": "payments_by_user_id",
+        "hidden": true
+      }
+    ],
+    "allowInsert": false
   }
 }

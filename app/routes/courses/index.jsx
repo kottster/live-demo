@@ -55,12 +55,6 @@ export default () => (
           }[r.type])
       }),
 
-      // Add $ sign to price column
-      price: (column) => ({
-        ...column,
-        render: (r) => (r.price ? `$${r.price}` : '')
-      }),
-
       // Show link as a clickable link instead of a plain text
       link: (column) => ({
         ...column,
@@ -75,29 +69,6 @@ export default () => (
           </a>
         )
       })
-    }}
-    form={{
-      fieldOverrides: {
-        type: {
-          label: 'Payment type',
-          column: 'type',
-          required: true,
-          formField: {
-            type: 'select',
-            options: [
-              { label: 'Free', value: 'FREE' },
-              { label: 'Included', value: 'INCLUDED_IN_SUBSCRIPTION' },
-              { label: 'Paid', value: 'PAID' }
-            ]
-          }
-        },
-        available: {
-          label: 'Course is available for purchase',
-          column: 'available',
-          required: true,
-          formField: { type: 'checkbox' }
-        }
-      }
     }}
   />
 );

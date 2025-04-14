@@ -28,12 +28,5 @@ export default () => (
         "billing_plans", and "payment_methods".
       </p>
     }
-    columnOverrides={{
-      // Add $ sign to amount column
-      amount: (column) => ({
-        ...column,
-        render: (r) => `$${r.amount}`
-      })
-    }}
   />
 );
