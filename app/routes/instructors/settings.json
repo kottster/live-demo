@@ -4,11 +4,11 @@
     "table": "instructors",
     "columns": [
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "column": "id"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "formFieldSpan": "6",
         "formField": {
           "type": "input"
@@ -16,26 +16,26 @@
         "column": "first_name"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "column": "bio"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "formField": {
           "type": "input"
         },
         "column": "education"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "column": "updated_at"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "column": "avatar_url"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "formFieldSpan": "6",
         "formField": {
           "type": "input"
@@ -43,7 +43,7 @@
         "column": "last_name"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "column": "created_at"
       },
       {

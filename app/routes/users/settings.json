@@ -4,7 +4,7 @@
     "table": "users",
     "columns": [
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "column": "updated_at"
       },
       {
@@ -37,11 +37,11 @@
     "relationships": [
       {
         "key": "user_activities_by_user_id",
-        "hidden": true
+        "hiddenInTable": true
       },
       {
         "key": "payments_by_user_id",
-        "hidden": true
+        "hiddenInTable": true
       }
     ],
     "allowInsert": false

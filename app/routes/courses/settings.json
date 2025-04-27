@@ -4,28 +4,28 @@
     "table": "courses",
     "columns": [
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "position": 0,
         "relationshipPreviewColumns": [],
         "id": "id",
         "column": "id"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "position": 1,
         "relationshipPreviewColumns": [],
         "id": "name",
         "column": "name"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "position": 2,
         "relationshipPreviewColumns": [],
         "id": "description",
         "column": "description"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "position": 3,
         "relationshipPreviewColumns": [],
         "id": "available",
@@ -64,7 +64,7 @@
     "relationships": [
       {
         "key": "payment_courses_by_course_id",
-        "hidden": true
+        "hiddenInTable": true
       }
     ]
   }

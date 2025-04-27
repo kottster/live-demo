@@ -48,21 +48,21 @@
         "column": "created_at"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "position": 6,
         "relationshipPreviewColumns": [],
         "id": "canceled_reason",
         "column": "canceled_reason"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "position": 7,
         "relationshipPreviewColumns": [],
         "id": "active",
         "column": "active"
       },
       {
-        "hidden": true,
+        "hiddenInTable": true,
         "position": 8,
         "relationshipPreviewColumns": [],
         "id": "canceled_at",
@@ -72,7 +72,7 @@
         "position": 9,
         "relationshipPreviewColumns": [],
         "id": "updated_at",
-        "hidden": true,
+        "hiddenInTable": true,
         "column": "updated_at"
       }
     ],

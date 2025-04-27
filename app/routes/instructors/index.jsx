@@ -18,11 +18,13 @@ export const action = app.defineTableController(dataSource, {
  */
 export default () => (
   <TablePage
-    columnTransformer={(columns) => [
+    customColumns={[
       // Add custom full_name column at the beginning
       {
+        column: 'full_name',
         label: 'Full Name',
         width: 220,
+        position: 0,
         render: (r) => (
           <div className='flex gap-2 items-center'>
             <img src={r.avatar_url} alt='' className='w-6 h-6 rounded-full' />
@@ -32,8 +34,6 @@ export default () => (
           </div>
         )
       },
-
-      ...columns
     ]}
     columnOverrides={{
       email: (column) => ({

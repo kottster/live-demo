@@ -21,17 +21,14 @@ export default () => (
     headerRightSection={
       <GoToGithubButton link='https://github.com/kottster/live-demo/blob/main/app/routes/courses/index.jsx' />
     }
-    headerBottomSection={
-      <p className='text-gray-600 mt-2 pb-2'>
-        A table with data from the "courses" table, supporting record creation,
-        reading, updating, and deletion.
-      </p>
-    }
-    columnTransformer={(columns) => [
+    customColumns={[
       // Add custom course column at the beginning
       {
+        column: 'course',
         label: 'Course',
         width: 300,
+        position: 0,
+        hiddenInForm: true,
         render: (r) => (
           <div className='flex flex-col gap-1 items-start'>
             <span className='font-semibold'>{r.name}</span>
@@ -41,7 +38,6 @@ export default () => (
           </div>
         )
       },
-      ...columns
     ]}
     columnOverrides={{
       // Show course type in a human-readable format
