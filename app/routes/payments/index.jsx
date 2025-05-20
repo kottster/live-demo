@@ -24,7 +24,7 @@ export default () => (
     columnOverrides={{
       active: (column) => ({
         ...column,
-        label: 'Status',
+        label: 'Active',
         render: (r) => (
           <span
             className={`px-2 py-1 rounded-full text-xs font-medium ${
@@ -33,7 +33,7 @@ export default () => (
                 : 'bg-gray-100 text-gray-600'
             }`}
           >
-            {r.active ? 'Active' : 'Canceled'}
+            {r.active ? 'Yes' : 'No'}
           </span>
         )
       }),

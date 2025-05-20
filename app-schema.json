@@ -26,11 +26,6 @@
       "icon": "creditCard"
     },
     {
-      "id": "usageMetrics",
-      "name": "Usage Metrics",
-      "icon": "pieChart"
-    },
-    {
       "id": "analyticsDashboard",
       "name": "Analytics Dashboard",
       "icon": "barChart2"
