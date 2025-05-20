@@ -28,10 +28,12 @@
       },
       {
         "hiddenInTable": true,
+        "hiddenInForm": true,
         "column": "updated_at"
       },
       {
         "hiddenInTable": true,
+        "hiddenInForm": true,
         "column": "avatar_url"
       },
       {
@@ -44,6 +46,7 @@
       },
       {
         "hiddenInTable": true,
+        "hiddenInForm": true,
         "column": "created_at"
       },
       {
@@ -57,6 +60,10 @@
           "type": "input"
         },
         "column": "phone_number"
+      },
+      {
+        "hiddenInForm": true,
+        "column": "joined_at"
       }
     ]
   }

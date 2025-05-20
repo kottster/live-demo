@@ -32,7 +32,8 @@ export default () => (
               {r.first_name} {r.last_name}
             </span>
           </div>
-        )
+        ),
+        hiddenInForm: true,
       },
     ]}
     columnOverrides={{
@@ -68,8 +69,8 @@ export default () => (
       }),
       joined_at: (column) => ({
         ...column,
-        render: (r) => dayjs(r.joined_at).fromNow()
-      })
+        render: (r) => dayjs(r.joined_at).fromNow(),
+      }),
     }}
   />
 );
