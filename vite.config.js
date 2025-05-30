@@ -1,34 +1,27 @@
 import { defineConfig } from 'vite';
-import { vitePlugin as remix } from '@remix-run/dev';
-import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { vitePlugin as kottster } from '@kottster/react';
+import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  root: './app',
+  server: {
+    port: 5480,
+    open: true,
+  },
+  build: {
+    outDir: '../dist/client',
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 1000,
+  },
   plugins: [
-    remix({
-      future: {
-        v3_fetcherPersist: true,
-        v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
-        v3_lazyRouteDiscovery: false,
-        v3_singleFetch: false
-      },
-      routes(defineRoutes) {
-        return defineRoutes((route) => {
-          route('/auth/*', 'service-route.js', { id: 'auth' }),
-            route('/-/*', 'service-route.js', { id: 'service' });
-        });
-      }
-    }),
+    react(),
+    kottster(),
     tailwindcss(),
-    tsconfigPaths(),
-    viteCommonjs({
-      include: ['util']
-    })
   ],
-  optimizeDeps: {
-    include: ['react', 'react-dom', '@kottster/common', '@kottster/server'],
-    exclude: ['@kottster/react']
-  }
+  resolve: {
+    alias: {
+      '@': '/app'
+    }
+  },
 });
