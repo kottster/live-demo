@@ -1,4 +1,4 @@
-# Kottster Live DemoAdd commentMore actions
+# Kottster Live Demo
 
 This live demo shows the type of admin panel you can build with [Kottster](https://kottster.app/).
 

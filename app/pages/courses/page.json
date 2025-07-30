@@ -1,13 +1,18 @@
 {
-  "_version": "1",
-  "rootTable": {
+  "version": "1.0",
+  "type": "table",
+  "title": "Courses",
+  "icon": "bookOpen",
+  "config": {
+    "dataSource": "postgres-db",
+    "fetchStrategy": "databaseTable",
     "table": "courses",
     "columns": [
       {
+        "hiddenInTable": true,
         "position": 0,
         "relationshipPreviewColumns": [],
         "id": "id",
-        "hiddenInTable": true,
         "column": "id"
       },
       {
@@ -25,21 +30,21 @@
         "column": "description"
       },
       {
-        "hiddenInTable": true,
+        "label": "Creator",
         "position": 3,
-        "relationshipPreviewColumns": [],
-        "id": "available",
-        "column": "available"
-      },
-      {
-        "position": 4,
         "relationshipPreviewColumns": [
           "first_name",
           "last_name"
         ],
         "id": "instructor_id",
-        "label": "Creator",
         "column": "instructor_id"
+      },
+      {
+        "hiddenInTable": true,
+        "position": 4,
+        "relationshipPreviewColumns": [],
+        "id": "available",
+        "column": "available"
       },
       {
         "position": 5,
@@ -51,7 +56,6 @@
         "position": 6,
         "relationshipPreviewColumns": [],
         "id": "price",
-        "prefix": "$",
         "column": "price"
       },
       {

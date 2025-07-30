@@ -1,5 +1,5 @@
 {
-  "name": "kottster-demo-app-2",
+  "name": "kottster-demo-app",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -12,25 +12,25 @@
   },
   "dependencies": {
     "@hotjar/browser": "^1.0.9",
-    "@kottster/cli": "^2.x",
-    "@kottster/common": "^2.x",
-    "@kottster/react": "^2.x",
-    "@kottster/server": "^2.x",
-    "@mantine/charts": "^8.0.2",
-    "@mantine/core": "^8.x",
-    "@mantine/dates": "^8.0.2",
-    "@mantine/hooks": "^8.x",
-    "@mantine/modals": "^8.x",
-    "@mantine/notifications": "^8.x",
-    "@tailwindcss/vite": "^4.1.8",
+    "@kottster/cli": "^3.x",
+    "@kottster/common": "^3.x",
+    "@kottster/react": "^3.x",
+    "@kottster/server": "^3.x",
+    "@mantine/charts": "^8.2.1",
+    "@mantine/core": "^8.2.1",
+    "@mantine/dates": "^8.2.1",
+    "@mantine/hooks": "^8.2.1",
+    "@mantine/modals": "^8.2.1",
+    "@mantine/notifications": "^8.2.1",
+    "@tailwindcss/vite": "^4.1.11",
     "dayjs": "^1.11.13",
     "knex": "^3.1.0",
-    "pg": "^8.16.0",
+    "pg": "^8.16.3",
     "react": "^19.x",
     "react-dom": "^19.x",
     "react-router-dom": "^7.x",
-    "recharts": "^2.15.3",
-    "tailwindcss": "^4.1.8"
+    "recharts": "^3.1.0",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.x",
@@ -40,8 +40,5 @@
   },
   "engines": {
     "node": ">=20"
-  },
-  "overrides": {
-    "react-is": "^19.0.0"
   }
 }

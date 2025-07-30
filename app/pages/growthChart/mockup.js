@@ -5,15 +5,30 @@ export function generateChartMockupData(startDate, endDate) {
   const end = dayjs(endDate);
   const days = end.diff(start, 'day') + 1;
 
+  let visitors = 1200;
+  let users = 500;
+  let purchasedItems = 100;
+  let subscriptions = 40;
+
   const data = [];
 
   for (let i = 0; i < days; i++) {
+    const visitorsGrowth = Math.round(Math.random() * 50);
+    const usersGrowth = Math.round(Math.random() * 20);
+    const purchasedItemsGrowth = Math.round(Math.random() * 8);
+    const subscriptionsGrowth = Math.round(Math.random() * 4);
+
+    visitors += visitorsGrowth;
+    users += usersGrowth;
+    purchasedItems += purchasedItemsGrowth;
+    subscriptions += subscriptionsGrowth;
+
     data.push({
       date: start.add(i, 'day').format('YYYY-MM-DD'),
-      visitors: Math.floor(Math.random() * (300 - 200 + 1)) + 200,
-      users: Math.floor(Math.random() * (200 - 150 + 1)) + 150,
-      purchasedItems: Math.floor(Math.random() * (170 - 100 + 1)) + 100,
-      subscriptions: Math.floor(Math.random() * (90 - 10 + 1)) + 10,
+      users,
+      purchasedItems,
+      visitors,
+      subscriptions,
     });
   }
 

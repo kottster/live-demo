@@ -20,7 +20,7 @@ const Period = Object.freeze({
 });
 
 export function PeriodPicker({ value, onChange }) {
-  const [period, setPeriod] = useState(Period.Last7Days);
+  const [period, setPeriod] = useState(Period.Last30Days);
   const [rawValue, setRawValue] = useState(value);
 
   useEffect(() => {

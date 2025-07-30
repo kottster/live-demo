@@ -1,5 +1,5 @@
 import { Card, Title, Box, LoadingOverlay } from '@mantine/core';
-import { AreaChart } from '@mantine/charts';
+import { LineChart } from '@mantine/charts';
 import dayjs from 'dayjs';
 
 /**
@@ -21,7 +21,7 @@ export function GrowthChart({ data, loading }) {
         Growth Chart
       </Title>
       <Box h={400} pr='sm'>
-        <AreaChart
+        <LineChart
           h='100%'
           data={formattedData}
           dataKey='date'

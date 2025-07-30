@@ -1,5 +1,4 @@
 import { createApp } from '@kottster/server';
-import { dataSourceRegistry } from './data-sources/registry';
 import schema from '../../kottster-app.json';
 
 export const app = createApp({
@@ -8,7 +7,16 @@ export const app = createApp({
 
   // Only for live demo purposes
   __readOnlyMode: true,
-  __ensureValidToken: async (req) => ({ isTokenValid: true, newRequest: req })
+  __ensureValidToken: async (req) => ({ 
+    isTokenValid: true, 
+    newRequest: req,
+    user: {
+      id: '1',
+      email: 'demo@kottster.app',
+      role: {
+        id: '1',
+        name: 'Administrator',
+      }
+    }
+  })
 });
-
-app.registerDataSources(dataSourceRegistry);

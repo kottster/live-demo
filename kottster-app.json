@@ -45,5 +45,15 @@
       "name": "Control Panel",
       "icon": "briefcase"
     }
+  ],
+  "menuPageOrder": [
+    "users",
+    "instructors",
+    "courses",
+    "payments",
+    "analyticsDashboard",
+    "growthChart",
+    "locationsOverview",
+    "controlPanel"
   ]
 }

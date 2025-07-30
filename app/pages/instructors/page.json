@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "type": "table",
+  "title": "Instructors",
+  "icon": "users",
+  "config": {
+    "dataSource": "postgres-db",
+    "fetchStrategy": "databaseTable",
+    "table": "instructors",
+    "columns": [
+      {
+        "hiddenInTable": true,
+        "formFieldSpan": "6",
+        "column": "first_name"
+      },
+      {
+        "hiddenInTable": true,
+        "formFieldSpan": "6",
+        "column": "last_name"
+      },
+      {
+        "hiddenInTable": true,
+        "hiddenInForm": true,
+        "column": "updated_at"
+      },
+      {
+        "hiddenInTable": true,
+        "hiddenInForm": true,
+        "column": "created_at"
+      },
+      {
+        "hiddenInTable": true,
+        "column": "education"
+      },
+      {
+        "hiddenInTable": true,
+        "hiddenInForm": true,
+        "column": "avatar_url"
+      },
+      {
+        "hiddenInTable": true,
+        "column": "id"
+      },
+      {
+        "hiddenInTable": true,
+        "column": "bio"
+      },
+      {
+        "hiddenInForm": true,
+        "column": "active"
+      },
+      {
+        "hiddenInForm": true,
+        "column": "joined_at"
+      }
+    ]
+  }
+}

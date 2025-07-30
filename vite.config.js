@@ -7,7 +7,7 @@ export default defineConfig({
   root: './app',
   server: {
     port: 5480,
-    open: true,
+    open: false,
   },
   build: {
     outDir: '../dist/client',
@@ -15,8 +15,8 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
   },
   plugins: [
-    react(),
     kottster(),
+    react(),
     tailwindcss(),
   ],
   resolve: {

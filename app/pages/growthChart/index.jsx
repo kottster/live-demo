@@ -19,6 +19,8 @@ export default () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
+  const usersChangePercentage = ((data[data.length - 1]?.users - data[0]?.users) / data[0]?.users) * 100;
+
   const fetchGrowthChartData = async () => {
     if (!periodDates[0] || !periodDates[1]) {
       return;
@@ -56,25 +58,27 @@ export default () => {
       <Card withBorder radius='md' padding='lg' pos='relative'>
         <Grid mb='xl' p='md' pb='xs'>
           <Grid.Col span={3}>
-            <Stat label='New Users' value={data.reduce((acc, item) => acc + item.users, 0).toLocaleString('en-US')} />
-          </Grid.Col>
-          <Grid.Col span={3}>
             <Stat
-              label='New Visitors'
-              value={data.reduce((acc, item) => acc + item.visitors, 0).toLocaleString('en-US')}
+              label='Users'
+              value={data[data.length - 1]?.users.toLocaleString('en-US')}
+              change={{
+                direction: usersChangePercentage >= 0 ? 'up' : 'down',
+                value:
+                  usersChangePercentage.toLocaleString('en-US', {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 1,
+                  }) + '%',
+              }}
             />
           </Grid.Col>
           <Grid.Col span={3}>
-            <Stat
-              label='Purchased Items'
-              value={data.reduce((acc, item) => acc + item.purchasedItems, 0).toLocaleString('en-US')}
-            />
+            <Stat label='Visitors' value={data[data.length - 1]?.visitors.toLocaleString('en-US')} />
           </Grid.Col>
           <Grid.Col span={3}>
-            <Stat
-              label='New Subscriptions'
-              value={data.reduce((acc, item) => acc + item.subscriptions, 0).toLocaleString('en-US')}
-            />
+            <Stat label='Purchased Items' value={data[data.length - 1]?.purchasedItems.toLocaleString('en-US')} />
+          </Grid.Col>
+          <Grid.Col span={3}>
+            <Stat label='Active Subscriptions' value={data[data.length - 1]?.subscriptions.toLocaleString('en-US')} />
           </Grid.Col>
         </Grid>
 
@@ -84,7 +88,7 @@ export default () => {
             data={formattedData}
             dataKey='date'
             curveType='linear'
-            withDots={true}
+            withDots={false}
             series={[
               {
                 name: 'users',

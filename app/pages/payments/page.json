@@ -1,7 +1,15 @@
 {
-  "_version": "1",
-  "rootTable": {
+  "version": "1.0",
+  "type": "table",
+  "title": "Payments",
+  "icon": "creditCard",
+  "config": {
+    "dataSource": "postgres-db",
+    "fetchStrategy": "databaseTable",
     "table": "payments",
+    "allowDelete": false,
+    "allowUpdate": false,
+    "allowInsert": false,
     "columns": [
       {
         "position": 0,
@@ -35,7 +43,6 @@
         "column": "payment_method_id"
       },
       {
-        "prefix": "$",
         "position": 4,
         "relationshipPreviewColumns": [],
         "id": "amount",
@@ -48,37 +55,35 @@
         "column": "created_at"
       },
       {
-        "position": 6,
-        "relationshipPreviewColumns": [],
-        "id": "active",
-        "column": "active"
-      },
-      {
         "hiddenInTable": true,
-        "position": 7,
+        "position": 6,
         "relationshipPreviewColumns": [],
         "id": "canceled_reason",
         "column": "canceled_reason"
       },
       {
-        "hiddenInTable": true,
+        "position": 7,
+        "relationshipPreviewColumns": [],
+        "id": "active",
         "hiddenInForm": true,
+        "column": "active"
+      },
+      {
+        "hiddenInTable": true,
         "position": 8,
         "relationshipPreviewColumns": [],
         "id": "canceled_at",
+        "hiddenInForm": true,
         "column": "canceled_at"
       },
       {
         "hiddenInTable": true,
-        "hiddenInForm": true,
         "position": 9,
         "relationshipPreviewColumns": [],
         "id": "updated_at",
+        "hiddenInForm": true,
         "column": "updated_at"
       }
-    ],
-    "allowInsert": false,
-    "allowUpdate": false,
-    "allowDelete": false
+    ]
   }
 }

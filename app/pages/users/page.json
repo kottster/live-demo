@@ -1,37 +1,25 @@
 {
-  "_version": "1",
-  "rootTable": {
+  "version": "1.0",
+  "type": "table",
+  "title": "Users",
+  "icon": "users",
+  "config": {
+    "dataSource": "postgres-db",
+    "fetchStrategy": "databaseTable",
     "table": "users",
+    "allowInsert": false,
     "columns": [
       {
         "hiddenInTable": true,
         "column": "updated_at"
       },
       {
-        "formField": {
-          "type": "input"
-        },
         "formFieldSpan": "6",
         "column": "first_name"
       },
       {
-        "formField": {
-          "type": "input"
-        },
         "formFieldSpan": "6",
         "column": "last_name"
-      },
-      {
-        "formField": {
-          "type": "input"
-        },
-        "column": "email"
-      },
-      {
-        "formField": {
-          "type": "input"
-        },
-        "column": "phone_number"
       }
     ],
     "relationships": [
@@ -43,7 +31,6 @@
         "key": "payments_by_user_id",
         "hiddenInTable": true
       }
-    ],
-    "allowInsert": false
+    ]
   }
 }
